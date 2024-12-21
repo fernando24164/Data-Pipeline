@@ -1,0 +1,8 @@
+pandas==2.2.3
+boto3==1.35.81
+SQLAlchemy==2.0.36
+psycopg2-binary==2.9.10
+mypy_boto3_sts==1.35.61
+
+pytest==8.3.4
+pytest-mock==3.14.0
