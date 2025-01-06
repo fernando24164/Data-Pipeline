@@ -1,0 +1,4 @@
+{
+  "arn_role": "arn:aws:iam::123456789012:role/MyTestRole",
+  "region": "eu-central-1"
+}
