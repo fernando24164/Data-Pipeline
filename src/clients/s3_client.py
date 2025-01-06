@@ -1,7 +1,6 @@
 from typing import BinaryIO
 import pandas as pd
 from io import BytesIO
-import boto3
 
 from src.clients.mixins.token_manager import TokenManagerMixin
 

@@ -5,13 +5,17 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm.session import Session
 
+from clients.mixins.secret_manager import AwsSecretMixin
+from clients.mixins.token_manager import TokenManagerMixin
 
-class PostgresClient:
+
+class PostgresClient(AwsSecretMixin):
     """PostgreSQL database client with connection pooling and session management."""
 
-    def __init__(self, database_url: str) -> None:
+    def __init__(self, role_arn: str) -> None:
+        super().__init__(role_arn)
         self.engine: Engine = create_engine(
-            database_url, pool_size=10, max_overflow=20, pool_pre_ping=True
+            self.database_url, pool_size=10, max_overflow=20, pool_pre_ping=True
         )
         self.Session = scoped_session(sessionmaker(bind=self.engine))
 

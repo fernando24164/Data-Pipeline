@@ -8,7 +8,9 @@ def test_execute_query(mock_boto_session):
     mock_boto_session.return_value.client.return_value = mock_client
 
     athena_client = AthenaClient(
-        database="test_db", output_location="s3://test-bucket/"
+        database="test_db",
+        output_location="s3://test-bucket/",
+        role_arn="arn:aws:iam::123456789012:role/test-role",
     )
 
     mock_client.start_query_execution.return_value = {
@@ -28,7 +30,9 @@ def test_get_query_results(mock_boto_session, mock_sleep):
     mock_boto_session.return_value.client.return_value = mock_client
 
     athena_client = AthenaClient(
-        database="test_db", output_location="s3://test-bucket/"
+        database="test_db",
+        output_location="s3://test-bucket/",
+        role_arn="arn:aws:iam::123456789012:role/test-role",
     )
 
     mock_client.get_query_execution.return_value = {

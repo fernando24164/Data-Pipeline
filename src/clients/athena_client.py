@@ -1,6 +1,5 @@
 from typing import Iterator, List, Optional
 import time
-import boto3
 
 from src.clients.mixins.token_manager import TokenManagerMixin
 
@@ -12,7 +11,7 @@ class AthenaClient(TokenManagerMixin):
     POLL_INTERVAL = 1  # seconds
 
     def __init__(
-        self, database: str, output_location: str, profile_name: Optional[str] = None
+        self, database: str, output_location: str, role_arn: str = None
     ) -> None:
         """
         Initialize Athena client with database and output location.
@@ -22,7 +21,7 @@ class AthenaClient(TokenManagerMixin):
             output_location: S3 location for query results
             profile_name: AWS credentials profile name
         """
-        super().__init__(profile_name)
+        super().__init__(role_arn)
         self.database = database
         self.output_location = output_location
 
