@@ -78,7 +78,3 @@ def main():
     PostgresExporter(config.get("arn_role")).export_customer_sells_to_postgres(
         customer_sales_analysis
     )
-
-
-if __name__ == "__main__":
-    main()
