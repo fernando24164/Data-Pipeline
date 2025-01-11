@@ -5,8 +5,8 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm.session import Session
 
-from clients.mixins.secret_manager import AwsSecretMixin
-from clients.mixins.token_manager import TokenManagerMixin
+from src.clients.mixins.secret_manager import AwsSecretMixin
+from src.clients.mixins.token_manager import TokenManagerMixin
 
 
 class PostgresClient(AwsSecretMixin):

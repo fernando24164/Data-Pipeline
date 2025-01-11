@@ -1,6 +1,6 @@
 import pandas as pd
 
-from clients.postgres_client import PostgresClient
+from src.clients.postgres_client import PostgresClient
 
 
 class PostgresExporter:
@@ -8,10 +8,14 @@ class PostgresExporter:
         self.client = PostgresClient(arn_role)
 
     def export_customer_sells(self, df: pd.DataFrame) -> None:
-        """Export a pandas DataFrame to a PostgreSQL table."""
+        """Export a pandas DataFrame to a PostgreSQL table.
+        Only total_session_time, avg_product_sales, and customer_id will be exported.
+        """
         table_name = "customer_sells"
         
-        df.to_sql(
+        df_filtered = df[['total_session_time', 'avg_product_sales', 'customer_id']]
+        
+        df_filtered.to_sql(
             table_name,
             self.client.get_session().connection(),
             if_exists="replace",

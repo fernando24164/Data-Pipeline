@@ -1,8 +1,8 @@
 import datetime
 from typing import Generator, TypedDict
 
-from clients.athena_client import AthenaClient
-from clients.s3_client import S3Client
+from src.clients.athena_client import AthenaClient
+from src.clients.s3_client import S3Client
 
 
 class SalesLoader:
