@@ -11,7 +11,10 @@ class AthenaClient(TokenManagerMixin):
     POLL_INTERVAL = 1  # seconds
 
     def __init__(
-        self, database: str, output_location: str, role_arn: str = None
+        self,
+        database: str,
+        output_location: str = "s3://output-location/",
+        role_arn: str = None,
     ) -> None:
         """
         Initialize Athena client with database and output location.
