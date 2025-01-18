@@ -11,8 +11,8 @@ from src.exporters.postgres_exporter import PostgresExporter
 def test_df():
     return pd.DataFrame(
         {
-            "total_session_time": [10, 20, 30],
-            "avg_product_sales": [5, 10, 15],
+            "total_session_time": [12.5, 30.2, 5.8],
+            "avg_product_sales": [25.0, 10.5, 100.2],
             "customer_id": [1, 2, 3],
             "other_column": ["a", "b", "c"],
         }
