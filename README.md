@@ -1,4 +1,4 @@
-# 🚧 Data Pipeline Project: The Wild West of Data Wrangling 🤠 (WIP)
+# 🚧 Data Pipeline Project: The Wild West of Data Wrangling 🤠
 
 A simple data pipeline for loading, transforming, and exporting CSV data.
 
@@ -91,4 +91,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
     SQLAlchemy: For database interaction and ORM support.
     Click: For building the command-line interface.
 
-This project is under active development. Contributions and feedback are highly appreciated!
+Contributions and feedback are highly appreciated!
