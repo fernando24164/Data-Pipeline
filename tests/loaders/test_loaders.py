@@ -1,6 +1,5 @@
 from unittest.mock import MagicMock, patch
 
-from src.clients.athena_client import AthenaClient
 from src.loaders.loaders import CustomerSession, QueryParams
 
 

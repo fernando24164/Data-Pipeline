@@ -1,5 +1,5 @@
 import datetime
-import os
+from pathlib import Path
 from typing import Generator, TypedDict
 
 from src.clients.athena_client import AthenaClient
@@ -45,9 +45,8 @@ class QueryParams(TypedDict):
 class CustomerSession:
     def __init__(self, role_arn: str):
         self.athena_client = AthenaClient(database="clients", role_arn=role_arn)
-        file_path = os.path.join(os.path.dirname(__file__), "customer_session.sql")
-        with open(file_path, "r") as f:
-            self.query = f.read()
+        file_path = Path(__file__).parent / "customer_session.sql"
+        self.query = file_path.read_text()
 
     def get_customer_sessions(self, query_params: QueryParams) -> Generator:
         """

@@ -55,14 +55,18 @@ def main():
     config = Config()
 
     # Load data
-    sales_data = list(SalesLoader(config.get("arn_role")).get_sales(time_period=7))
-    sales_df = pd.DataFrame([row.split(',') for sublist in sales_data for row in sublist])
+    sales_data = list(
+        SalesLoader(config.config_data.get("arn_role")).get_sales(time_period=7)
+    )
+    sales_df = pd.DataFrame(
+        [row.split(",") for sublist in sales_data for row in sublist]
+    )
 
     query_params = QueryParams(
         customer_id=1, start_time="21/02/2023", end_time="28/02/2023"
     )
     customer_session_data = CustomerSession(
-        config.get("arn_role")
+        config.config_data.get("arn_role")
     ).get_customer_sessions(query_params)
     customer_session_df = pd.DataFrame(customer_session_data)
 
@@ -75,6 +79,6 @@ def main():
     )
 
     # Export data
-    PostgresExporter(config.get("arn_role")).export_customer_sells_to_postgres(
-        customer_sales_analysis
-    )
+    PostgresExporter(
+        config.config_data.get("arn_role")
+    ).export_customer_sells_to_postgres(customer_sales_analysis)
